@@ -3,23 +3,25 @@ let $ = require('jquery');  // jQuery now loaded and assigned to $
 const path = require('path');
 let fs = require('fs-extra');
 
-const {dialog } = require('electron').remote;
+const { dialog } = require('electron').remote;
 const DecompressZip = require('decompress-zip');
 
-const archivolicencia = path.join(__dirname, 'licencia.json');
-const carpetamodulos = path.join(__dirname, 'recursos/');
+const app = require('electron').remote.app;
+
+const carpetamodulos = path.join(app.getPath('userData'), 'recursos/');
 //const servidor = 'http://localhost:8081/red/public/';
 const servidor = 'https://www.santillanadigital.net/';
 
 try{
-	fs.mkdirSync(path.join(__dirname, 'recursos'));
+	fs.mkdirSync(path.join(app.getPath('userData'), 'recursos'));
 }catch(err){}
 
 try{
-	fs.mkdirSync(path.join(__dirname, 'js'));
+	fs.mkdirSync(path.join(app.getPath('userData'), 'js'));
 }catch(err){}
 
 
+//console.log('app222.getData es :', carpetamodulos);
 
 //const carpetamodulos = 'moduloscargados/';
 

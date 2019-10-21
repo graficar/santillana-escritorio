@@ -1,6 +1,4 @@
 const downloadImage = require('image-downloader');
-const express = require('express');
-const app = express();
 const dl = require('download-file-with-progressbar');
 
 var dd;
@@ -134,11 +132,11 @@ function crearDocumentos(rutaModulo, documentos, subSeccionAuxiliar){
 			
 			
 			if(fs.existsSync(rutaModulo+'/'+nombreArchivo)){
-				htmlSub +='<div class="col-md-6"><div class="btn-group mr-1 mb-1"><a id="'+nombreArchivoAux+'" class="btn btn-social btn-min-width btn-warning btn-modulo documentos" href="'+rutaModulo+'/'+nombreArchivo+'">'+'<span class="la la-file font-medium-4" style="line-height: 2.3rem !important;"></span> <span class="documentoNombre">'+d+'</span></a><button type="button" id="'+nombreArchivoAux+'_menu" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu"><a class="dropdown-item elimnarDocumentos" href="'+rutaModulo+'/'+nombreArchivo+'" data-ruta="'+rutaModulo+'" data-href="'+documentos[d]+'" data-nombre="'+nombreArchivoAux+'">Eliminar</a></div></div><span class="imagenCarga"> <img src="../assets/imagenes/visto.png" class="icono"></span><span class="porcentajeCarga"> 100%</span></div>';
+				htmlSub +='<div class="col-md-6"><div class="btn-group mr-1 mb-1"><a id="'+nombreArchivoAux+'" class="btn btn-social btn-min-width btn-warning btn-modulo documentos" href="'+rutaModulo+'/'+nombreArchivo+'" data-nombre="'+d+'">'+'<span class="la la-file font-medium-4" style="line-height: 2.3rem !important;"></span> <span class="documentoNombre">'+d+'</span></a><button type="button" id="'+nombreArchivoAux+'_menu" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu"><a class="dropdown-item elimnarDocumentos" href="'+rutaModulo+'/'+nombreArchivo+'" data-ruta="'+rutaModulo+'" data-href="'+documentos[d]+'" data-nombre="'+nombreArchivoAux+'">Eliminar</a></div></div><span class="imagenCarga"> <img src="../assets/imagenes/visto.png" class="icono"></span><span class="porcentajeCarga"> 100%</span></div>';
 				
 				
 			}else{
-				htmlSub +='<div class="col-md-6"><div class="btn-group mr-1 mb-1"><a id="'+nombreArchivoAux+'" class="btn btn-social btn-min-width btn-outline-warning btn-modulo descargaDocumentos" href="'+documentos[d]+'" data-ruta="'+rutaModulo+'">'+'<span class="la la-file font-medium-4" style="line-height: 2.3rem !important;"></span>'+' <span class="documentoNombre">'+d+'</span></a><button type="button" id="'+nombreArchivoAux+'_menu" class="btn btn-outline-warning dropdown-toggle" style="display: none;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu"><a class="dropdown-item elimnarDocumentos" href="'+rutaModulo+'/'+nombreArchivo+'" data-ruta="'+rutaModulo+'" data-href="'+documentos[d]+'" data-nombre="'+nombreArchivoAux+'">Eliminar</a></div></div><span class="imagenCarga"> <img src="../assets/imagenes/carga.png" class="icono"></span><span class="porcentajeCarga"></span></div>';
+				htmlSub +='<div class="col-md-6"><div class="btn-group mr-1 mb-1"><a id="'+nombreArchivoAux+'" class="btn btn-social btn-min-width btn-outline-warning btn-modulo descargaDocumentos" href="'+documentos[d]+'" data-ruta="'+rutaModulo+'" data-nombre="'+d+'">'+'<span class="la la-file font-medium-4" style="line-height: 2.3rem !important;"></span>'+' <span class="documentoNombre">'+d+'</span></a><button type="button" id="'+nombreArchivoAux+'_menu" class="btn btn-outline-warning dropdown-toggle" style="display: none;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu"><a class="dropdown-item elimnarDocumentos" href="'+rutaModulo+'/'+nombreArchivo+'" data-ruta="'+rutaModulo+'" data-href="'+documentos[d]+'" data-nombre="'+nombreArchivoAux+'">Eliminar</a></div></div><span class="imagenCarga"> <img src="../assets/imagenes/carga.png" class="icono"></span><span class="porcentajeCarga"></span></div>';
 			}			
 		}      					      			
 	}	   
@@ -602,9 +600,10 @@ function descargar(boton, archivo, ruta, descomprimir=0, multimediaNombre="", ca
 				$( boton ).find('span.multimediaNombre').text("Descomprimiendo...");
 				descomprimirMultimedia(boton, ruta+'/'+nombre, ruta, multimediaNombre);				
 			}else{
+				let nombreBoton = boton.getAttribute("data-nombre");
 				$( boton ).removeClass( "descargaProgreso btn-outline-warning" ).addClass( "documentos btn-warning" );				
 				$( boton ).attr("href", ruta+'/'+nombre);
-				$( boton ).find('span.documentoNombre').text(multimediaNombre);				
+				$( boton ).find('span.documentoNombre').text(nombreBoton);				
 				$( '#'+id+'_menu' ).show();
 		 		$( '#'+id+'_menu' ).removeClass( "btn-outline-warning" ).addClass( "btn-warning" );
 				$( boton ).closest('.col-md-6').find('span.imagenCarga').html('<img src="../assets/imagenes/visto.png" class="icono">');

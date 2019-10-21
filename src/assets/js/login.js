@@ -121,7 +121,7 @@ function login(event){
 	  	}else{
 			if(body.status==200){
 				$( '#mensajeLogin' ).text("Cargando usuario...");
-				fs.writeFile(path.join(__dirname, 'js/'+username+'.json'), JSON.stringify(body.datos), function (err) {
+				fs.writeFile(path.join(app.getPath('userData'), 'js/'+username+'.json'), JSON.stringify(body.datos), function (err) {
 				  	if (err) throw err;				  
 				  	
 					usuario = existeLicencia(username, clave);

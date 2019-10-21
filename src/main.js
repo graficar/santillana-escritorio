@@ -1,13 +1,10 @@
 'use strict';
 
-const express = require('express'); //your express app
 const { app, BrowserWindow, ipcMain } = require('electron');
 const url = require('url') ;
 const path = require('path');
 const log = require('electron-log');
 const {autoUpdater} = require("electron-updater");
-const DecompressZip = require('decompress-zip');
-const shell = require('electron').shell;
 
 //-------------------------------------------------------------------
 // Logging
@@ -22,7 +19,6 @@ autoUpdater.logger.transports.file.level = 'info';
 log.info('App starting...');
 
 
-
 let win
 
 function sendStatusToWindow(text) {
@@ -30,14 +26,12 @@ function sendStatusToWindow(text) {
   win.webContents.send('message', text);
 }
 
-function createWindow(){
-	let z = express();
-	z.use(express.static(__dirname + './app/recursos'));
+function createWindow(){	
 	win = new BrowserWindow({ 
 		width: 1400, height: 1400,		
 		webPreferences: {
 		    webSecurity: false
-		  }
+		  },
 		//fullscreen: true
 		//, frame: false
 	})
@@ -53,39 +47,11 @@ function createWindow(){
 	win.on('closed', () => {		
 		win = null
 	})
-
-	/*win.webContents.on('will-navigate', (event, url) => {
-	  event.preventDefault();
-	  if (isSafeishURL(url)) {
-	    shell.openExternal(url);
-	  }
-	  //shell.openExternal(url)
-	});*/
-
-
 }
-
-autoUpdater.on('checking-for-update', () => {
-  sendStatusToWindow('Checking for update...');
-})
-autoUpdater.on('update-available', (ev, info) => {
-  sendStatusToWindow('Update available.');
-})
-autoUpdater.on('update-not-available', (ev, info) => {
-  sendStatusToWindow('Update not available.');
-})
-autoUpdater.on('error', (ev, err) => {
-  sendStatusToWindow('Error in auto-updater.');
-})
-autoUpdater.on('download-progress', (ev, progressObj) => {
-  sendStatusToWindow('Download progress...');
-})
-autoUpdater.on('update-downloaded', (ev, info) => {
-  sendStatusToWindow('Update downloaded; will install in 5 seconds');
-});
 
 app.on('ready', () => {
   createWindow();
+  autoUpdater.checkForUpdatesAndNotify();
 });
 
 function isSafeishURL(url) {
@@ -113,26 +79,19 @@ app.on('window-all-closed', () => {
 // Uncomment any of the below events to listen for them.  Also,
 // look in the previous section to see them being used.
 //-------------------------------------------------------------------
-// autoUpdater.on('checking-for-update', () => {
-// })
-// autoUpdater.on('update-available', (ev, info) => {
-// })
-// autoUpdater.on('update-not-available', (ev, info) => {
-// })
-// autoUpdater.on('error', (ev, err) => {
-// })
-// autoUpdater.on('download-progress', (ev, progressObj) => {
-// })
-autoUpdater.on('update-downloaded', (ev, info) => {
-  // Wait 5 seconds, then quit and install
-  // In your application, you don't need to wait 5 seconds.
-  // You could call autoUpdater.quitAndInstall(); immediately
-  setTimeout(function() {
-    autoUpdater.quitAndInstall();  
-  }, 5000)
-})
+ipcMain.on('app_version', (event) => {
+  event.sender.send('app_version', { version: app.getVersion() });
+});
 
-app.on('ready', function()  {
-  autoUpdater.checkForUpdates();
+autoUpdater.on('update-available', () => {
+  mainWindow.webContents.send('update_available');
+});
+
+autoUpdater.on('update-downloaded', () => {
+  mainWindow.webContents.send('update_downloaded');
+});
+
+ipcMain.on('restart_app', () => {
+  autoUpdater.quitAndInstall();
 });
 

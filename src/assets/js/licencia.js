@@ -4,7 +4,7 @@
 
 
 function existeLicencia(username, token) {  
-   var archivolicencia = path.join(__dirname, 'js/'+username+'.json');
+   var archivolicencia = path.join(app.getPath('userData'), 'js/'+username+'.json');
 	
    //Check if file exists   
    if(fs.existsSync(archivolicencia)) {
