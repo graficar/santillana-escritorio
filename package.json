@@ -1,7 +1,7 @@
 {
   "name": "AgendaSantillanaDigital",
   "version": "1.0.1",
-  "description": "",
+  "description": "Agenda Santillana Digital",  
   "main": "main.js",
   "repository": {
     "type" : "git",
@@ -10,8 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "electron-builder build --mac --win --publish never",
-    "deploy": "electron-builder build --mac --win --publish always"
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
   },
   "author": "",
   "license": "ISC",
