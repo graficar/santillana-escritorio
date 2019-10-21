@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "UTF-8">
+      <title>Agenda Santillana Digital 1.1.0</title>
+
+      <link rel = "stylesheet" href = "../../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+      <link rel = "stylesheet" href = "../assets/css/font-awesome.min.css"/>
+      <link rel = "stylesheet" href = "../assets/css/styles.css"/>  
+	  <!--estilos del sistema web de redes-->
+	  <link rel="stylesheet" type="text/css" href="../assets/fonts/line-awesome/css/line-awesome.min.css">
+	  <link rel = "stylesheet" href = "../assets/css/colors.min.css"/>
+	  <link rel = "stylesheet" href = "../assets/css/components.min.css"/>
+        
+        <script src = "./global.js" ></script>     
+        <script src = "../assets/js/licencia.js" ></script>
+        <script src = "../assets/js/login.js" ></script>
+        <script src = "../assets/js/modulo.js" ></script>
+        <script src = "../assets/js/menu.js" ></script>	    	    
+	    <script src = "../assets/js/vendors/js/vendors.min.js" ></script>	    
+        <script src = "./view.js" ></script>        
+   </head>
+   
+   <body style="background-image: url('../assets/imagenes/bg2.jpg'); background-size: cover">        
+       <div id="login" style="display: none;">             
+         <div class="container">
+		 <div class="content-header"> 
+			 <div class="col-md-12 col-12 text-center">
+				<img src="../assets/imagenes/logo.png" alt="branding logo" class="logo">
+			</div> 
+		  </div>
+           <div id="login-row" class="row justify-content-center align-items-center">
+             <div id="login-column" class="col-md-6">
+			 <!--<img src="../assets/imagenes/logo.png" alt="branding logo" style="max-width: 400px; width: 80%;margin-left: 45px;">-->
+               <div class="login-box col-md-12" style="border-radius:0.35rem">                 
+				 <form id="login-form" class="form" action="" method="post">
+                     <h3 class="text-center" style="color:#586465; font-size:1.51rem; font-family: 'EncodeSansSemiExpanded-Bold'">Ingresa al Sistema</h3>
+                     <br>
+                     
+					 <!-- <label for="username" class="text-info">Username:</label><br> --> 
+				    <div class="form-group ingreso position-relative has-icon-left">                      
+						<input type="text" name="username" id="username" class="form-control borde-input" placeholder="Usuario" data-kwimpalastatus="alive" data-kwimpalaid="1553550410620-3" style="background-color: rgb(232, 240, 254) !important;">
+						  <div class="form-control-position">
+							  <i class="la la-user"></i>
+							</div>
+				    </div>
+					<br>
+                     <div class="form-group ingreso position-relative has-icon-left">
+                         <!-- <label for="password" class="text-info">Password:</label><br> -->
+						 <input type="password" name="password" id="password" class="form-control borde-input" placeholder="Contraseña" data-kwimpalastatus="alive" data-kwimpalaid="1553550410620-2" style="background-color: rgb(232, 240, 254) !important;">
+						<div class="form-control-position">
+                          <i class="la la-key"></i>
+                        </div>
+                     </div>
+                     <div class="form-group ingreso">
+                         <!-- <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label> -->
+                         <br>
+						 <center>
+						 	<input type="submit" name="submit" id="btn_login" class="btn btn-min-width col-md-12 col-12 text-center btn-verde white border" value="Ingresar"><br>
+							 <p id="mensajeLogin"></p>
+						 </center>                         
+
+                          <div id="mensaje"></div>
+                     </div>
+                     <div id="register-link" class="form-group">
+                         <a id="cargarlicencia" style="display: none;" href="#" class="btn mr-3 mb-3 btn-info">Cargar Licencia</a> 
+                         <!-- <button type="button" id="cargarlicencia" class="text-info">Cargar Licencia</button> -->
+                     </div>                                 
+                 </form>                            
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>   
+
+
+       <div id="divprincipal" style="display: none;">            
+          <!-- <div class="content-header"> 
+				 <div class="col-md-12 col-12 text-center">
+					<img src="../assets/imagenes/logo.png" alt="branding logo" class="logo">
+				</div> 
+			  </div>-->
+		   <!--
+		  <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="padding: 0; padding-right: 15px;">
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              
+			  <ul class="navbar-nav">
+                <li class="nav-item titulo-banner">
+					<a href="#" class="logoInicio"><img src="../assets/imagenes/logo.png" alt="branding logo" class="logo"></a>
+					<!-- <h3 class="titulo3">Agenda Santillana Digital</h3> -->
+				  <!--<img src="../assets/imagenes/logo.jpeg" style="margin-left: 0;">
+                  <!--<button type="button" id="examinarzip" class="btn btn-warning round btn-min-width mr-1 mb-1" style="border-radius: 1.25rem; color: white">Cargar Módulo</button>
+                </li>                  
+              </ul>
+            </div>              
+            <span class="navbar-brand"></span>    
+
+            <div class="dropdown" style="padding-right: 20px;">
+              <button class="dropbtn user-name text-bold-600 black" id="nombreusuario"></button>
+              <div class="dropdown-content">
+                <a class="dropdown-item" href="#" id="cerrarsesion" style="margin-right: 20px;"><i class="fa fa-power-off ft-power" aria-hidden="true"></i><span style="margin-left: 15px;">Salir</span> </a>
+              </div>
+            </div>
+			<span class="avatar avatar-online">
+				<img src="../assets/imagenes/avatar_user.jpg">
+			</span>
+            
+            <!-- <button type="button" id="cerrarsesion" style="border: none; background-color: transparent;">Cerrar Sesión</button>
+          </nav>-->
+		   
+		   <div class="row breadcrumbs-top">
+            <div class="breadcrumb-wrapper col-12">
+			  <a id="atras" class="btn btn-danger" style="display: none;"><i class="la la-undo"></i></a>
+			  <a id="atrasprincipal" class="btn btn-danger" style="display: none;"><i class="la la-undo"></i></a>
+			  <a id="atrasmodulo" class="btn btn-danger" style="display: none;"><i class="la la-undo"></i></a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" id="listaInicio">Inicio</a>
+                </li>
+                <li class="breadcrumb-item" ><a href="#" id="listaModulo" style="display: none;">Módulo</a>
+                </li>
+                <li class="breadcrumb-item" id="listaContenido" style="display: none;">Contenido
+                </li>
+              </ol>
+			  <a id="sincronizar" class="btn btn-light" style="display: none; float: right; margin-right: 20px;"><span class="multimediaNombre">Sincronizar todo</span> <img src="../assets/imagenes/carga.png" class="icono"></a>
+            </div>
+          </div>
+		   
+		<div id="contenedorModuloInicio">
+		  	 	<div class="row" id="modulosInicio">	
+		   
+		   		</div>
+		
+
+
+			  <div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12" style="margin-top: 5px;" id="colprincipal">				  
+					
+				  
+				  <!--<p id="textoCargar">Espere hasta descargar los contenidos.</p>-->
+					
+				  
+				  
+				  <h4 id="cargandomodulo" style="text-align: center; display: none;">Cargando Datos, espere un momento por favor...</h4>
+
+				  <div id="moduloresumen" style="display: none;">   
+					<h5 id="titulo" style="margin: 15px 20px; color: #000; font-family: 'EncodeSansSemiExpanded-Bold'; border-bottom: 4px solid #F3AD3B; font-size:21px;" ></h5>
+					<!-- <button type="button" id="abrirhtml" class="btn btn-primary" style="background-color: #019589">Multimedia</button>            -->
+					<!--<h6 style="background-color: #72b8b8;">Descripción</h6>-->
+					<div class="alineacionResumen">                      
+					  <p id="parrafodescripcion" style="margin-top: 0px;"></p>
+					</div>
+
+					<div id="secciones" >  </div>                                                     
+				  </div>
+
+				  
+
+				</div>
+			  </div>
+			
+			  <iframe id = "multimedia" sandbox="allow-same-origin allow-scripts allow-top-navigation" style = "width: 100%; height: 99%; display: none;">
+
+			  </iframe>
+
+			   <iframe id = "recurso" style = "width: 100%; height: 99%; display: none;">
+
+			  </iframe>
+		</div>
+       
+	   
+		   
+		 Current version: <span id="version">vX.Y.Z</span>
+  <div id="messages"></div>
+<script>
+// Display the current version
+let version = window.location.hash.substring(1);
+document.getElementById('version').innerText = version;
+// Listen for messages
+const {ipcRenderer} = require('electron');
+ipcRenderer.on('message', function(event, text) {
+  var container = document.getElementById('messages');
+  var message = document.createElement('div');
+  message.innerHTML = text;
+  container.appendChild(message);
+})
+</script>
+		<!--<footer class="footer footer-static footer-light navbar-border">
+    
+	  
+		  <div class="content-footer ">		
+				<div class="footer-login">				
+					<div class="col-12 text-center">
+						Santillana Digital Ecuador es un producto de <img src="../assets/imagenes/logo_santillana.png" >
+					</div>
+				</div>
+				<div class="footer-login-copy">
+					<div class="text-center font-small-3 float-left footer-col50">Copyright © 2019 – Santillana Digital</div>
+					<div class="text-center font-small-3 float-right footer-col50">Estrategia de medios digitales desarrollada por: <a href="http://bbm.com.ec" class="enlace-inicio">BBMDIGITAL</a></div>
+				</div>		
+		</div>
+	  </footer> -->
+   </body>
+</html>

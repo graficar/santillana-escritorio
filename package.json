@@ -1,8 +1,8 @@
 {
   "name": "AgendaSantillanaDigital",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Agenda Santillana Digital",
-  "main": "main.js",
+  "main": "src/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/graficar/santillana-escritorio.git"
@@ -15,7 +15,7 @@
   "license": "MIT",
   "build": {
     "appId": "com.agendadigital.escritorio",
-    "artifactName": "AgendaSantillanaDigital-${version}.${ext}",    
+    "artifactName": "AgendaSantillanaDigital-${version}.${ext}",
     "asar": false,
     "dmg": {
       "contents": [
@@ -37,7 +37,7 @@
         "deb"
       ]
     },
-    "win": {	  
+    "win": {
       "target": "nsis",
       "icon": "build/icon.ico"
     },
@@ -51,19 +51,22 @@
     }
   },
   "devDependencies": {
-    "electron": "^5.0.1",
-    "electron-builder": "^20.40.2"
+    "electron": "^3.0.14",
+    "electron-builder": "^20.38.4"
   },
   "dependencies": {
-    "@babel/runtime": "^7.6.3",
+    "babel-runtime": "^6.26.0",
     "bcryptjs": "^2.4.3",
-    "decompress-zip": "^0.2.2",
+    "crypto": "^1.0.1",
+    "decompress-zip": "^0.3.1",
     "download-file-with-progressbar": "^1.2.3",
+    "electron-is-dev": "^1.1.0",
     "electron-log": "^3.0.8",
-    "electron-updater": "^4.0.6",
-    "fs-extra": "^8.1.0",
-    "image-downloader": "^3.5.0",
-    "jquery": "^3.4.1",
-    "request": "^2.88.0"
+    "electron-updater": "^4.1.2",
+    "express": "^4.16.4",
+    "fs-extra": "^7.0.1",
+    "image-downloader": "^3.4.2",
+    "jquery": "^3.3.1",
+    "request": "^2.81.0"
   }
 }
