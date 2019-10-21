@@ -15,11 +15,7 @@
   "license": "MIT",
   "build": {
     "appId": "com.agendadigital.escritorio",
-    "artifactName": "AgendaSantillanaDigital-${version}.${ext}",
-    "publish": {
-      "provider": "github",
-      "url": "https://github.com/graficar/santillana-escritorio"
-    },
+    "artifactName": "AgendaSantillanaDigital-${version}.${ext}",    
     "asar": false,
     "dmg": {
       "contents": [
@@ -42,6 +38,7 @@
       ]
     },
     "win": {
+	  "publish": [{provider: "github"}],
       "target": "nsis",
       "icon": "build/icon.ico"
     },
