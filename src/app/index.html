@@ -2,7 +2,7 @@
 <html>
    <head>
       <meta charset = "UTF-8">
-      <title>Agenda Santillana Digital 1.1.1</title>
+      <title>Agenda Santillana Digital 1.1.2</title>
 
       <link rel = "stylesheet" href = "../../bower_components/bootstrap/dist/css/bootstrap.min.css" />
       <link rel = "stylesheet" href = "../assets/css/font-awesome.min.css"/>
@@ -167,18 +167,11 @@
 			  </iframe>
 		</div>
        
-	   
-		   
-		 Current version: <span id="version">vX.Y.Z</span>
-  <div id="messages"></div>
 <script>
-// Display the current version
-let version = window.location.hash.substring(1);
-document.getElementById('version').innerText = version;
 // Listen for messages
 const {ipcRenderer} = require('electron');
 ipcRenderer.on('message', function(event, text) {
-  var container = document.getElementById('messages');
+  var container = document.getElementById('mensajeLogin');
   var message = document.createElement('div');
   message.innerHTML = text;
   container.appendChild(message);
