@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "electron .",
-    "dist": "build  --ia32 --x64 -w"
+    "dist": "build  --ia32 --x64 -w --publish always"
   },
   "author": "BBM Digital",
   "license": "MIT",
@@ -37,10 +37,7 @@
         "deb"
       ]
     },
-    "win": {
-	  "publish": {
-		"provider": "github"
-	  },
+    "win": {	  
       "target": "nsis",
       "icon": "build/icon.ico"
     },
