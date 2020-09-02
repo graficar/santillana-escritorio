@@ -58,7 +58,7 @@
     "babel-runtime": "^6.26.0",
     "bcryptjs": "^2.4.3",
     "crypto": "^1.0.1",
-    "decompress-zip": "^0.3.1",
+    "decompress-zip": "^0.3.2",
     "download-file-with-progressbar": "^1.2.3",
     "electron-is-dev": "^1.1.0",
     "electron-log": "^3.0.8",
